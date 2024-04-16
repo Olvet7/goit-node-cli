@@ -1,4 +1,4 @@
-console.log("Hello, Node!");
+// console.log("Hello, Node!");
 
 import { program } from "commander";
 program

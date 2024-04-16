@@ -1,8 +1,9 @@
 {
   "name": "node-settings",
+  "type": "module",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index"
+    "start": "node index.mjs",
+    "dev": "nodemon index.mjs"
   },
   "dependencies": {
     "commander": "^12.0.0"
