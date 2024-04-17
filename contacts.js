@@ -9,7 +9,6 @@ export async function listContacts() {
   const contacts = await fs.readFile(contactsPath, "utf-8");
   console.log(contacts);
   return JSON.parse(contacts);
-    // return JSON.parse(contacts)
   }
 
 export async function getContactById(contactId) {
@@ -17,7 +16,6 @@ export async function getContactById(contactId) {
   const parsedContacts = JSON.parse(contacts);
   const contact = parsedContacts.find(contact => contactId === contact.id);
   return contact || null;
-  // const contactObjById = await fs.readFile()
 }
 
 export async function addContact (name, email, phone ) {
@@ -43,7 +41,6 @@ export async function removeContact(id) {
     const [result] = contacts.splice(index, 1);
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
     return result;
-    // const contactsAfterDeleteItem = async
 }
 
 
