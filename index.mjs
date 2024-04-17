@@ -1,35 +1,35 @@
-// console.log("Hello, Node!");
+console.log("Hello, Node!");
+import { listContacts, getContactById, removeContact } from "./contacts.js";
 
 import { program } from "commander";
 program
-  .option("-a, --action <type>", "choose action")
-  .option("-i, --id <type>", "user id")
-  .option("-n, --name <type>", "user name")
-  .option("-e, --email <type>", "user email")
-  .option("-p, --phone <type>", "user phone");
+  .option("-a, --action, <type>")
+  .option("-i, --id, <type>")
+  .option("-n, --name, <type>")
+  .option("-e, --email, <type>", "user email")
+  .option("-p, --phone, <type>", "user phone");
 
 program.parse();
-
 const options = program.opts();
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      // ...
+      const contactsList = await listContacts();
+      return console.log(contactsList);
       break;
 
     case "get":
-      // ... id
-      break;
+      const contact = await getContactById(id);
+      return console.log(contact);;
 
     case "add":
-      // ... name email phone
-      break;
+      const newContactToList = contactsList.addContact(name, email, phone);
+      return console.log(newContactToList);;
 
     case "remove":
-      // ... id
-      break;
+      const removeContactById = await removeContact(id);
+      return console.log(removeContactById);
 
     default:
       console.warn("\x1B[31m Unknown action type!");
