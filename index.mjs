@@ -21,11 +21,11 @@ async function invokeAction({ action, id, name, email, phone }) {
 
     case "get":
       const contact = await getContactById(id);
-      return console.log(contact);;
+      return console.table(contact);;
 
     case "add":
       const newContactToList = await addContact(name, email, phone);
-      return console.log(newContactToList);;
+      return console.table(newContactToList);;
 
     case "remove":
       const removeContactById = await removeContact(id);
