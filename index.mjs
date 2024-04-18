@@ -1,9 +1,9 @@
 console.log("Hello, Node!");
-import { listContacts, getContactById, removeContact } from "./contacts.js";
+import { listContacts, getContactById, addContact, removeContact } from "./contacts.js";
 
 import { program } from "commander";
 program
-  .option("-a, --action, <type>")
+  .option("-a, --action <type>")
   .option("-i, --id, <type>")
   .option("-n, --name, <type>")
   .option("-e, --email, <type>", "user email")
@@ -16,15 +16,15 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contactsList = await listContacts();
-      return console.log(contactsList);
+      return console.table(contactsList);
       break;
 
     case "get":
       const contact = await getContactById(id);
-      return console.log(contact);;
+      return console.log();;
 
     case "add":
-      const newContactToList = contactsList.addContact(name, email, phone);
+      const newContactToList = await addContact(name, email, phone);
       return console.log(newContactToList);;
 
     case "remove":
